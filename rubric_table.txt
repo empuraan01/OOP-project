@@ -1,0 +1,158 @@
+================================================================================
+SMART SCHOOL MANAGEMENT SYSTEM - OOP REQUIREMENTS RUBRIC
+================================================================================
+
+This document maps each OOP requirement to its implementation location in the codebase.
+
+================================================================================
+1. MAIN CLASSES (4-5 classes)
+================================================================================
+✓ User.java          - Abstract base class for all users
+✓ Admin.java          - Administrative user class
+✓ Teacher.java        - Teacher user class
+✓ Student.java        - Student user class
+✓ AttendanceManager   - Manages attendance records
+✓ GradeManager        - Manages grade records
+✓ ScheduleManager     - Manages class schedules
+✓ LoginSystem         - Handles authentication
+✓ NoticeBoard         - Manages notifications
+
+Location: src/com/smartschool/users/, src/com/smartschool/management/,
+          src/com/smartschool/auth/, src/com/smartschool/notifications/
+
+================================================================================
+2. NESTED CLASS (Static or Non-static)
+================================================================================
+✓ PasswordHasher      - Static nested class inside PasswordUtils
+  Purpose: Simulates SHA-256 password hashing
+  Location: src/com/smartschool/auth/PasswordUtils.java
+
+================================================================================
+3. ABSTRACT CLASS
+================================================================================
+✓ User.java           - Abstract base class defining common user behavior
+  Abstract methods: authenticate(), getRole()
+  Location: src/com/smartschool/users/User.java
+
+================================================================================
+4. INTERFACE (Standalone or Nested)
+================================================================================
+✓ Role.java           - Interface defining role-based behavior
+  Methods: performRoleDuties(), getRoleName()
+  Location: src/com/smartschool/users/Role.java
+
+✓ Notifier.java       - Interface for notification capabilities
+  Methods: sendNotification(), receiveNotification()
+  Location: src/com/smartschool/notifications/Notifier.java
+
+================================================================================
+5. HIERARCHICAL INHERITANCE
+================================================================================
+✓ User (abstract)
+    ├── Admin extends User
+    ├── Teacher extends User
+    └── Student extends User
+
+  Location: src/com/smartschool/users/
+
+================================================================================
+6. MULTIPLE INHERITANCE (via Interfaces)
+================================================================================
+✓ Teacher implements Role, Notifier
+✓ Admin implements Role, Notifier
+✓ Student implements Notifier
+
+  Location: src/com/smartschool/users/Teacher.java, Admin.java, Student.java
+
+================================================================================
+7. PACKAGE STRUCTURE
+================================================================================
+✓ com.smartschool.users
+✓ com.smartschool.management
+✓ com.smartschool.auth
+✓ com.smartschool.notifications
+✓ com.smartschool.exceptions
+
+  Location: src/com/smartschool/
+
+================================================================================
+8. EXCEPTION HANDLING (2+ examples)
+================================================================================
+✓ InvalidLoginException      - Custom exception for login failures
+  Location: src/com/smartschool/exceptions/InvalidLoginException.java
+  Usage: LoginSystem.java (login method)
+
+✓ UnauthorizedAccessException - Custom exception for access violations
+  Location: src/com/smartschool/exceptions/UnauthorizedAccessException.java
+  Usage: GradeManager.java, AttendanceManager.java (access control)
+
+================================================================================
+9. I/O OPERATIONS (File handling or Scanner)
+================================================================================
+✓ File Handling:
+  - AttendanceManager.saveToFile() / loadFromFile()
+  - GradeManager.saveToFile() / loadFromFile()
+  Location: src/com/smartschool/management/
+
+✓ Scanner Input:
+  - Main.java (user interaction menu)
+  - LoginSystem.java (login credentials)
+  Location: src/com/smartschool/Main.java, src/com/smartschool/auth/LoginSystem.java
+
+================================================================================
+10. METHOD OVERLOADING (2+ cases)
+================================================================================
+✓ GradeManager.addGrade():
+  - addGrade(String studentId, String course, Double grade)
+  - addGrade(String studentId, String course, Integer grade)
+  - addGrade(String studentId, String... courses)
+  Location: src/com/smartschool/management/GradeManager.java
+
+✓ User constructors (see Constructor Overloading)
+
+================================================================================
+11. CONSTRUCTOR OVERLOADING (2+ cases)
+================================================================================
+✓ User():
+  - User(String id, String name, String email)
+  - User(String id, String name, String email, String password)
+  Location: src/com/smartschool/users/User.java
+
+✓ GradeManager():
+  - GradeManager()
+  - GradeManager(String filePath)
+  Location: src/com/smartschool/management/GradeManager.java
+
+================================================================================
+12. VARARGS OVERLOADING (2+ cases)
+================================================================================
+✓ GradeManager.addMultipleGrades():
+  - addMultipleGrades(String studentId, String... courses)
+  Location: src/com/smartschool/management/GradeManager.java
+
+✓ NoticeBoard.broadcastMessage():
+  - broadcastMessage(String message, String... recipientIds)
+  Location: src/com/smartschool/notifications/NoticeBoard.java
+
+================================================================================
+13. WRAPPER CLASS USAGE
+================================================================================
+✓ Integer, Double, Boolean usage:
+  - GradeManager uses Double and Integer for grades
+  - Boolean for authentication status
+  - Wrapper classes in collections (Map, List)
+  Location: src/com/smartschool/management/GradeManager.java
+
+================================================================================
+ADDITIONAL REQUIREMENTS
+================================================================================
+✓ Encapsulation: All fields are private with getters/setters
+✓ Naming Conventions: Follow Java naming conventions (PascalCase for classes, camelCase for methods)
+✓ Javadoc Comments: All classes and methods have comprehensive Javadoc
+✓ Indentation: Consistent 4-space indentation throughout
+✓ Package Structure: Logical organization of classes
+
+================================================================================
+END OF RUBRIC
+================================================================================
+

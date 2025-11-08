@@ -1,0 +1,19 @@
+# Compiled class files
+*.class
+out/
+
+# Data files
+grades.txt
+attendance.txt
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
