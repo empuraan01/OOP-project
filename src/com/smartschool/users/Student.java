@@ -1,5 +1,6 @@
 package com.smartschool.users;
 
+import com.smartschool.auth.PasswordUtils;
 import com.smartschool.notifications.Notifier;
 
 /**
@@ -64,7 +65,7 @@ public class Student extends User implements Notifier {
      */
     @Override
     public boolean authenticate(String inputPassword) {
-        return getPassword() != null && getPassword().equals(inputPassword);
+        return getPassword() != null && PasswordUtils.PasswordHasher.verifyPassword(inputPassword, getPassword());
     }
     
     /**
